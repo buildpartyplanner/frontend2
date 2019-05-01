@@ -3,36 +3,36 @@ export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
 export const DELETE = "DELETE";
 
 const initialState = {
-  todos: []
+  shoppings: []
 };
 
-export const reducer = (state = initialState, action) => {
+export const shoppingreducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD:
       return {
         ...state,
-        todos: state.todos.concat(action.payload)
+        shoppings: state.shoppings.concat(action.payload)
       };
     case TOGGLE_COMPLETED:
-      const newTodos = state.todos.map((todo, index) => {
+      const newshoppings = state.shoppings.map((shopping, index) => {
         console.log(action.payload, index);
         if (index === action.payload) {
-          return { value: todo.value, completed: !todo.completed };
+          return { value: shopping.value, completed: !shopping.completed };
         }
-        return todo;
+        return shopping;
       });
       return {
         ...state,
-        todos: newTodos
+        shoppings: newshoppings
       };
     case DELETE:
-      const filteredToDO = state.todos
+      const filteredshopping = state.shoppings
         .slice(0, action.payload)
-        .concat(state.todos.slice(action.payload + 1));
-      console.log(filteredToDO, action.payload);
+        .concat(state.shoppings.slice(action.payload + 1));
+      console.log(filteredshopping, action.payload);
       return {
         ...state,
-        todos: filteredToDO
+        shoppings: filteredshopping
       };
     default:
       return { ...state };
