@@ -20,7 +20,7 @@ class PartyList extends Component {
 
 const mapStateToProps = state => {
   return {
-    parties: state.parties
+    parties: state.partyreducer.parties
   };
 };
 

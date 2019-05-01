@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ShoppingItem from "./ShoppingItem";
 
-class ToDoList extends Component {
+class ShoppingList extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,8 +10,8 @@ class ToDoList extends Component {
   render() {
     return (
       <div>
-        {this.props.todos.map((todo, index) => (
-          <ShoppingItem key={index} todo={todo} index={index} />
+        {this.props.shoppings.map((shopping, index) => (
+          <ShoppingItem key={index} shopping={shopping} index={index} />
         ))}
       </div>
     );
@@ -20,8 +20,8 @@ class ToDoList extends Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    shoppings: state.shoppingreducer.shoppings
   };
 };
 
-export default connect(mapStateToProps)(ToDoList);
+export default connect(mapStateToProps)(ShoppingList);

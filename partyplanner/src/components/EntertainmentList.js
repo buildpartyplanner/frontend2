@@ -21,7 +21,7 @@ class EntertainmentList extends Component {
 
 const mapStateToProps = state => {
   return {
-    entertainments: state.entertainments
+    entertainments: state.entertainmentreducer.entertainments
   };
 };
 
