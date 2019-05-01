@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToDo } from "../actions";
+import { addToDo } from "../actions/todo/index";
 
 class ToDoForm extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class ToDoForm extends Component {
 
   render() {
     return (
-    
+      
       <form onSubmit={this.handleAdd}>
         <input
           onChange={event => this.setState({ todo: event.target.value })}

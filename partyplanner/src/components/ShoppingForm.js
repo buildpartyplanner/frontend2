@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToDo } from "../actions";
+import { addToDo } from "../actions/shopping/index";
 
 class ToDoForm extends Component {
   constructor() {

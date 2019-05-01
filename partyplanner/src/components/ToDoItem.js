@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteToDo, toggleCompleted } from "../actions";
+import { deleteToDo, toggleCompleted } from "../actions/todo/index";
 
 class ToDoItem extends Component {
   constructor(props) {

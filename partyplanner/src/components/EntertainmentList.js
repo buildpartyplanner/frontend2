@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ToDoItem from "./EntertainmentItem";
+import EntertainmentItem from "./EntertainmentItem";
 
-class ToDoList extends Component {
+class EntertainmentList extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
-        {this.props.todos.map((todo, index) => (
-          <ToDoItem key={index} todo={todo} index={index} />
+        {this.props.entertainments.map((entertainment, index) => (
+          <EntertainmentItem key={index} entertainment={entertainment} index={index} />
         ))}
       </div>
     );
@@ -20,8 +21,8 @@ class ToDoList extends Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    entertainments: state.entertainments
   };
 };
 
-export default connect(mapStateToProps)(ToDoList);
+export default connect(mapStateToProps)(EntertainmentList);

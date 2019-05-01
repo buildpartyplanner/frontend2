@@ -1,4 +1,4 @@
-import { ADD, DELETE, TOGGLE_COMPLETED } from "../reducers";
+import { ADD, DELETE, TOGGLE_COMPLETED } from "../../reducers/shopping/index";
 
 export const addToDo = todo => {
   return {

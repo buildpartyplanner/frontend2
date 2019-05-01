@@ -3,7 +3,7 @@ export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
 export const DELETE = "DELETE";
 
 const initialState = {
-  todos: []
+  entertainments: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -11,28 +11,28 @@ export const reducer = (state = initialState, action) => {
     case ADD:
       return {
         ...state,
-        todos: state.todos.concat(action.payload)
+        entertainments: state.entertainments.concat(action.payload)
       };
     case TOGGLE_COMPLETED:
-      const newTodos = state.todos.map((todo, index) => {
+      const newentertainments = state.entertainments.map((entertainment, index) => {
         console.log(action.payload, index);
         if (index === action.payload) {
-          return { value: todo.value, completed: !todo.completed };
+          return { value: entertainment.value, completed: !entertainment.completed };
         }
-        return todo;
+        return entertainment;
       });
       return {
         ...state,
-        todos: newTodos
+        entertainments: newentertainments
       };
     case DELETE:
-      const filteredToDO = state.todos
+      const filteredentertainment = state.entertainments
         .slice(0, action.payload)
-        .concat(state.todos.slice(action.payload + 1));
-      console.log(filteredToDO, action.payload);
+        .concat(state.entertainments.slice(action.payload + 1));
+      console.log(filteredentertainment, action.payload);
       return {
         ...state,
-        todos: filteredToDO
+        entertainments: filteredentertainment
       };
     default:
       return { ...state };

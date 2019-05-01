@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToDo } from "../actions";
+import { addEntertainment } from "../actions/entertainment/index";
 
-class ToDoForm extends Component {
+class EntertainmentForm extends Component {
   constructor() {
     super();
     this.state = {
-      todo: ""
+      entertainment: ""
     };
   }
 
   handleAdd = event => {
     event.preventDefault();
-    this.props.addToDo({ value: this.state.todo, completed: false });
-    this.setState({ todo: "" });
+    this.props.addEntertainment({ value: this.state.entertainment, completed: false });
+    this.setState({ entertainment: "" });
   };
 
   render() {
@@ -21,9 +21,9 @@ class ToDoForm extends Component {
     
       <form onSubmit={this.handleAdd}>
         <input
-          onChange={event => this.setState({ todo: event.target.value })}
+          onChange={event => this.setState({ entertainment: event.target.value })}
           name="value"
-          value={this.state.todo}
+          value={this.state.entertainment}
           placeholder="Enter Entertainment!"
         />
         <button>Submit!</button>
@@ -34,11 +34,11 @@ class ToDoForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    entertainments: state.entertainments
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addToDo }
-)(ToDoForm);
+  { addEntertainment }
+)(EntertainmentForm);
