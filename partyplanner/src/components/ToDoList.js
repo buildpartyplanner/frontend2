@@ -1,27 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import ToDoItem from "./ToDoItem";
+import React from 'react';
 
-class ToDoList extends Component {
-  constructor(props) {
-    super(props);
-  }
+import Todo from './Todo';
 
-  render() {
+import './Todo.css'
+
+function TodoList(props) {
     return (
-      <div>
-        {this.props.todos.map((todo, index) => (
-          <ToDoItem key={index} todo={todo} index={index} />
-        ))}
-      </div>
-    );
-  }
+        <div className='todoList'>
+            {props.todoList.map(task => {
+                return <Todo task={task} toggleTask={props.toggleTask} />;
+            })}
+        </div>
+    )
 }
 
-const mapStateToProps = state => {
-  return {
-    todos: state.reducer.todos
-  };
-};
 
-export default connect(mapStateToProps)(ToDoList);
+  export default TodoList

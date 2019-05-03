@@ -1,44 +1,80 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { addparty } from "../actions/party/index";
+import React, { Component } from 'react';
+import axios from 'axios';
+
+
 
 class PartyForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      party: ""
+      
+      guests: "",
+      theme: "",
+      date: "",
+      
     };
   }
 
-  handleAdd = event => {
+  addParty = event => {
     event.preventDefault();
-    this.props.addparty({ value: this.state.party, completed: false });
-    this.setState({ party: "" });
-  };
+    // add code to create the smurf using the api
 
+    
+    axios
+      .post(`${this.props.baseUrl}/smurfs`, this.state)
+      .then(res => {
+        this.setState({
+          guests: "",
+          theme: "",
+          date: "",
+          budget:"",
+          board: "",
+          
+        })
+        { this.props.addPartiess() }
+        this.props.history.push("/");
+      })
+
+      .catch (err =>
+    console.log(err))
+  }
+ 
+  handleInputChange = e => {
+    this.setState({ [e.target.guests]: e.target.value });
+  };
   render() {
     return (
-      
-      <form onSubmit={this.handleAdd}>
-        <input
-          onChange={event => this.setState({ party: event.target.value })}
-          name="value"
-          value={this.state.party}
-          placeholder="Enter Something party!"
-        />
-        <button>Submit</button>
-      </form>
+      <div className="PartyForm">
+        <form onSubmit={this.addParty}>
+          <input
+            onChange={this.handleInputChange}
+            placeholder="guest"
+            value={this.state.guest}
+            guests="guest"
+          />
+          <input
+            onChange={this.handleInputChange}
+            placeholder="theme"
+            value={this.state.theme}
+            guests="theme"
+          />
+          <input
+            onChange={this.handleInputChange}
+            placeholder="date"
+            value={this.state.date}
+            guests="date"
+          />
+          <input
+            onChange={this.handleInputChange}
+            placeholder="budget"
+            value={this.state.budget}
+            guests="budget"
+          />
+        
+          <button type="submit" className="button">Add Party!</button>
+        </form>
+      </div>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    parties: state.parties
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { addparty }
-)(PartyForm);
+export default PartyForm;

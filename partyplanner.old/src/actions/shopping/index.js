@@ -1,9 +1,9 @@
 import { ADD, DELETE, TOGGLE_COMPLETED } from "../../reducers/shopping/index";
 
-export const addToDo = todo => {
+export const addShopping = shopping => {
   return {
     type: ADD,
-    payload: todo
+    payload: shopping
   };
 };
 
@@ -14,7 +14,7 @@ export const toggleCompleted = id => {
   };
 };
 
-export const deleteToDo = id => {
+export const deleteShopping = id => {
   return {
     type: DELETE,
     payload: id

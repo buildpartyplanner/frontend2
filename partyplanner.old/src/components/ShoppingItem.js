@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteToDo, toggleCompleted } from "../actions/shopping/index";
+import { deleteShopping, toggleCompleted } from "../actions/shopping/index";
 
-class ToDoItem extends Component {
+class ShoppingItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -16,11 +16,11 @@ class ToDoItem extends Component {
       <div>
         <h2
           onClick={this.handleToggleCompleted}
-          style={this.props.todo.completed ? { color: "red" } : null}
+          style={this.props.shopping.completed ? { color: "red" } : null}
         >
-          {this.props.todo.value}
+          {this.props.shopping.value}
         </h2>
-        <button onClick={() => this.props.deleteToDo(this.props.index)}>
+        <button onClick={() => this.props.deleteShopping(this.props.index)}>
           Delete!
         </button>
       </div>
@@ -30,5 +30,5 @@ class ToDoItem extends Component {
 
 export default connect(
   null,
-  { toggleCompleted, deleteToDo }
-)(ToDoItem);
+  { toggleCompleted, deleteShopping }
+)(ShoppingItem);
