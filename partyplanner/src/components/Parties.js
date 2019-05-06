@@ -7,11 +7,11 @@ class Parties extends Component {
   }
   render() {
     return (
-      <div className="Smurfs">
+      <div className="parties">
       
         <h1>Party Planner Details!</h1>
         <ul>
-          {this.props.smurfs.map(smurf => {
+          {this.props.parties.map(smurf => {
             return (
               <Smurf
                 deleteSmurf={this.props.deleteSmurf}
@@ -29,6 +29,6 @@ class Parties extends Component {
   }
 }
 Smurf.defaultProps = {
- smurfs: [],
+ parties: [],
 };
 export default Parties;

@@ -6,48 +6,47 @@ import './App.css';
 import PartyForm from './components/PartyForm';
 import Parties from './components/Parties';
 import ShoppingForm from './components/ShoppingForm'
+import TodoForm from './components/TodoForm'
 
 
-const baseUrl = "http://localhost:3333";
+const baseUrl = "https://arcane-bayou-55024.herokuapp.com/";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      smurfs: [],
+      parties: [],
     };
   }
 
   componentDidMount() {
-   this.getSmurfs()
+   this.getparties()
   }
 
-  getSmurfs() {
+  getparties() {
     axios
-    .get(`${baseUrl}/smurfs`)
+    .get(`${baseUrl}//api/party/:id`)
     .then(res => 
       this.setState({
-        smurfs: res.data
+        parties: res.data
       }))
 
     .catch(err => console.log(err))
 
   }
 
-  deleteSmurf = (ev, smurfId) => {
+  deleteParty = (ev, partyId) => {
     ev.preventDefault()
-    axios.delete(`${baseUrl}/smurfs/${smurfId}`)
+    axios.delete(`${baseUrl}/api/party/:id${partyId}`)
       .then(res => this.setState({
-      smurfs: res.data
+      parties: res.data
       }))
     .catch(err => console.log(err))
   }
   
 
 
-  // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
-  // Notice what your map function is looping over and returning inside of Smurfs.
-  // You'll need to make sure you have the right properties on state and pass them down to props.
+
   render() {
     return (
       <div className="App">
@@ -55,18 +54,21 @@ class App extends Component {
         <nav>
           <h1 className="header">Party Planner!!</h1>
         <div className="nav-links"> 
-            <NavLink onClick={() => this.getSmurfs()} to="/">Party Planner!</NavLink>
-            <NavLink exact to="/smurf-form">Add Party</NavLink>
-            <NavLink exact to="/TodoFunctionality">Add To do List</NavLink>
-            <NavLink exact to="/ShoppingForm">Add Shopping List!</NavLink>
+            <NavLink onClick={() => this.getparties()} to="/">Party Planner!</NavLink>
+            <NavLink exact to="/party-form">Add Party</NavLink>
+            <NavLink exact to="/shopping-form">Add Shopping</NavLink>
+            <NavLink exact to="/todo-form">Add To do List</NavLink>
+            
+            
 
             
         </div>
         </nav>
-        <Route exact path="/" render={props => <Parties {...props} getSmurfs={this.getSmurfs} smurfs={this.state.smurfs} baseUrl={baseUrl} deleteSmurf={this.deleteSmurf}/>} />
+        <Route exact path="/" render={props => <Parties {...props} getparties={this.getparties} parties={this.state.parties} baseUrl={baseUrl} deleteParty={this.deleteParty}/>} />
 
-        <Route path="/smurf-form" render={props => <PartyForm {...props} baseUrl={baseUrl} smurfs={this.state.smurfs} getSmurfs={this.getSmurfs}/>}/>
-        
+        <Route path="/party-form" render={props => <PartyForm {...props} baseUrl={baseUrl} parties={this.state.parties} getparties={this.getparties}/>}/>
+        <Route path="/shopping-form" render={props => <ShoppingForm {...props} baseUrl={baseUrl} parties={this.state.parties} getparties={this.getparties}/>}/>
+        <Route path="/todo-form" render={props => <TodoForm {...props} baseUrl={baseUrl} parties={this.state.parties} getparties={this.getparties}/>}/>
         
       </div>
     );

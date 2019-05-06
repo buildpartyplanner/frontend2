@@ -21,7 +21,7 @@ class PartyForm extends Component {
 
     
     axios
-      .post(`${this.props.baseUrl}/smurfs`, this.state)
+      .post(`${this.props.baseUrl}//api/party/:id`, this.state)
       .then(res => {
         this.setState({
           guests: "",
