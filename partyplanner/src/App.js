@@ -52,12 +52,12 @@ class App extends Component {
       <div className="App">
        
         <nav>
-          <h1 className="header">Party Planner!!</h1>
+          <h1 className="header">Party Planner !!</h1>
         <div className="nav-links"> 
-            <NavLink onClick={() => this.getparties()} to="/">Party Planner!</NavLink>
-            <NavLink exact to="/party-form">Add Party</NavLink>
-            <NavLink exact to="/shopping-form">Add Shopping</NavLink>
-            <NavLink exact to="/todo-form">Add To do List</NavLink>
+            <NavLink onClick={() => this.getparties()} to="/">Home!</NavLink>
+            <NavLink exact to="/party-form">Add Party!</NavLink>
+            <NavLink exact to="/shopping-form">Add Shopping!</NavLink>
+            <NavLink exact to="/todo-form">Add To do List!</NavLink>
             
             
 

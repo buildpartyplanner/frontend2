@@ -4,16 +4,16 @@ import React from 'react';
 const Party = props => {
   return (
     <div className="Party">
-      <p>{props.name}</p>
-      <p>{props.height} </p>
-      <p>{props.age} </p>
+      <p>{props.guests}</p>
+      <p>{props.theme} </p>
+      <p>{props.date} </p>
       <button className="delete-button" onClick={ev => props.deleteParty(ev, props.id)}>Delete</button>
     </div>
   );
 };
 Party.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
+  guests: '',
+  theme: '',
+  date: ''
 };
 export default Party;
